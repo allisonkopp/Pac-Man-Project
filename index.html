@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <title>PacMan</title>
+  </head>
+  <body>
+    <div id="title-screen">
+      <div id="title-screen-contents">
+        <div>
+          <h1><b>PACMAN</b></h1>
+        </div>
+        <div class="player-name-input">
+          <h2>Enter your name:</h2>
+          <form id="name-input">
+            <input type="text" name="playerName" autofocus="autofocus" id="player-name" />
+          </form>
+        </div>
+        <!-- If there's time -->
+        <div id="level-select">
+          <button class="btn difficulty-btn" type="button">Easy</button>
+          <button class="btn difficulty-btn" type="button">Medium</button>
+          <button class="btn difficulty-btn" type="button">Hard</button>
+        </div>
+        <div>
+          <button class="btn" id="start-btn" type="button" onclick="startGame()">Start Game</button>
+          <button class="btn" id="score-btn" type="button">High Scores</button>
+        </div>
+      </div>
+    </div>
+    <div id="game-container">
+      <div id="game-board-upper">
+        <div id="boundary">
+          <canvas id="game-board" height="800" width="1000"></canvas>
+        </div>
+      </div>
+      <div id="game-board-lower">
+        <div id="score-container">
+          <h1>Score:</h1>
+          <h1 id="score">0</h1>
+        </div>
+        <div id="lives">
+          <img class="heart" id="life-1" src="./images/heart.png" alt="heart" height="60px" />
+          <img class="heart" id="life-2" src="./images/heart.png" alt="heart" height="60px" />
+          <img class="heart" id="life-3" src="./images/heart.png" alt="heart" height="60px" />
+        </div>
+      </div>
+    </div>
+    <div id="end-screen">
+      <h1>Game Over</h1>
+      <div id="replay-game">
+        <h2>Play again?</h2>
+        <div id="replay-selection">
+          <button type="button" onclick="replayGame()">Yes</button>
+          <button type="button">No</button>
+        </div>
+        <button type="button" onclick="newPlayer()">New Player</button>
+      </div>
+    </div>
+    <div id="high-score-list">
+      <h1>High Scores</h1>
+      <ol id="score-list"></ol>
+    </div>
+    <script type="text/javascript" src="gameBoard.js"></script>
+    <script type="text/javascript" src="coin.js"></script>
+    <script type="text/javascript" src="player.js"></script>
+    <script type="text/javascript" src="ghost.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+  </body>
+</html>

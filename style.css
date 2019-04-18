@@ -1,0 +1,127 @@
+@import url("https://fonts.googleapis.com/css?family=Sigmar+One");
+@import url("https://fonts.googleapis.com/css?family=Anton");
+
+* {
+  font-family: "anton";
+}
+
+#title-screen {
+  /* display: flex; */
+  display: none;
+  justify-content: center;
+  background-color: black;
+  color: white;
+}
+
+#title-screen-contents {
+  width: 1000px;
+  height: 800px;
+  background-color: black;
+  align-content: center;
+}
+
+#title-screen h1 {
+  font-size: 100px;
+  text-align: center;
+}
+
+#title-screen h2 {
+  font-size: 40px;
+}
+
+.player-name-input {
+  justify-content: center;
+  display: flex;
+}
+
+#player-name {
+  border: none;
+  color: white;
+  background-color: pink;
+  border: none;
+  cursor: text;
+  caret-color: white;
+  font-size: 40px;
+  height: 40px;
+  width: 500px;
+}
+
+#player-name:focus {
+  outline: none;
+}
+
+#level-select {
+  display: flex;
+  justify-content: center;
+  /* padding: 30px; */
+}
+
+.btn {
+  background-color: #f8cc48;
+  color: white;
+  border-radius: 12px;
+  padding: 16px 30px;
+  cursor: pointer;
+}
+
+.difficulty-btn {
+  font-size: 20px;
+  margin: 30px;
+}
+
+.difficulty-btn:focus {
+  outline: none;
+  border: solid 8px white;
+}
+
+#start-btn {
+  font-size: 40px;
+}
+
+#game-container {
+  /* display: none; */
+  display: flex;
+  background-color: black;
+  width: 100%;
+}
+
+#boundary {
+  /* display: flex; */
+  justify-content: center;
+}
+
+#game-board {
+  justify-content: center;
+}
+
+#game-board-upper {
+  display: inline-flex;
+  background-color: black;
+  width: 100%;
+  justify-content: center;
+}
+
+#high-score {
+  justify-content: center;
+  align-content: center;
+}
+
+#game-board-lower {
+  display: inline-flex;
+  width: 100%;
+  justify-content: space-around;
+  background-color: black;
+  color: white;
+}
+
+#score-container {
+  display: inline-flex;
+}
+
+#lives {
+  display: inline-flex;
+}
+
+#end-screen {
+  display: none;
+}
