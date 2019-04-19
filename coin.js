@@ -1,77 +1,80 @@
-ctx = document.querySelector("canvas").getContext("2d");
+const coins = [];
+const superCoins = [];
+const coinBuffer = 6;
 
-class Coin {
-  constructor(x, y) {
-    this.x = x;
-    this.y = y;
-    this.height = 6;
-    this.width = 6;
+class Coin extends World {
+  constructor(x, y, width, height) {
+    super(x, y, width, height);
   }
-  drawCoin(x, y) {
+
+  drawCoin(r) {
     ctx.beginPath();
     ctx.fillStyle = "white";
-    ctx.arc(this.x, this.y, 6, 0, Math.PI * 2, true);
-    ctx.closePath();
-    ctx.fill();
-  }
-  drawSuperCoin(x, y) {
-    ctx.beginPath();
-    ctx.fillStyle = "white";
-    ctx.arc(this.x, this.y, 10, 0, Math.PI * 2, true);
+    ctx.arc(this.x, this.y, r, 0, Math.PI * 2, true);
     ctx.closePath();
     ctx.fill();
   }
 }
 
-let coins = [];
-let superCoins = [];
+const generateCoins = (startValue, condition, y, r) => {
+  for (let i = startValue; i < condition; i += 35) {
+    const newCoin = new Coin(i, y, coinBuffer, coinBuffer);
+    newCoin.drawCoin(r);
+    r === 6 ? coins.push(newCoin) : superCoins.push(newCoin);
+  }
+};
 
-//First Row
-for (let i = 125; i < 450; i += 35) coins.push(new Coin(i, 50));
-for (let i = 545; i < 965; i += 35) coins.push(new Coin(i, 50));
+const generateCoin = (x, y, r) => {
+  const newCoin = new Coin(x, y, coinBuffer, coinBuffer);
+  newCoin.drawCoin(r);
+  r === 6 ? coins.push(newCoin) : superCoins.push(newCoin);
+};
 
-//Second Row
-for (let i = 90; i < 965; i += 35) coins.push(new Coin(i, 150));
+//First row
+generateCoin(75, 50, 10);
+generateCoins(125, 450, 50, 6);
+generateCoins(545, 965, 50, 6);
+generateCoin(935, 50, 10);
 
-//Third Row
-for (let i = 90; i < 250; i += 35) coins.push(new Coin(i, 225));
-for (let i = 335; i < 475; i += 35) coins.push(new Coin(i, 225));
-for (let i = 545; i < 685; i += 35) coins.push(new Coin(i, 225));
-for (let i = 755; i < 965; i += 35) coins.push(new Coin(i, 225));
+//Second row
+generateCoins(90, 965, 150, 6);
 
-//Fourth Row
-for (let i = 335; i < 685; i += 35) coins.push(new Coin(i, 300));
-coins.push(new Coin(230, 300));
-coins.push(new Coin(755, 300));
+//Third row
+generateCoins(90, 250, 225, 6);
+generateCoins(335, 475, 225, 6);
+generateCoins(545, 685, 225, 6);
+generateCoins(755, 965, 225, 6);
 
-//Fifth Row
-for (let i = 55; i < 370; i += 35) coins.push(new Coin(i, 375));
-for (let i = 650; i < 1000; i += 35) coins.push(new Coin(i, 375));
+//Fourth row
+generateCoins(335, 685, 300, 6);
+generateCoin(230, 300, 6);
+generateCoin(755, 300, 6);
 
-//Sixth Row
-for (let i = 335; i < 685; i += 35) coins.push(new Coin(i, 450));
-coins.push(new Coin(230, 450));
-coins.push(new Coin(755, 450));
+//Fifth row
+generateCoins(55, 370, 375, 6);
+generateCoins(650, 1000, 375, 6);
 
-//Seventh Row
-for (let i = 90; i < 475; i += 35) coins.push(new Coin(i, 525));
-for (let i = 545; i < 965; i += 35) coins.push(new Coin(i, 525));
+//Sixth row
+generateCoins(335, 685, 450, 6);
+generateCoin(230, 450, 6);
+generateCoin(755, 450, 6);
 
-//Eighth Row
-for (let i = 90; i < 160; i += 35) coins.push(new Coin(i, 600));
-for (let i = 230; i < 770; i += 35) coins.push(new Coin(i, 600));
-for (let i = 860; i < 965; i += 35) coins.push(new Coin(i, 600)); //off?
+//Seventh row
+generateCoins(90, 475, 525, 6);
+generateCoins(545, 965, 525, 6);
 
-//Nineth Row
-for (let i = 90; i < 265; i += 35) coins.push(new Coin(i, 675));
-for (let i = 335; i < 475; i += 35) coins.push(new Coin(i, 675));
-for (let i = 545; i < 685; i += 35) coins.push(new Coin(i, 675));
-for (let i = 755; i < 965; i += 35) coins.push(new Coin(i, 675));
+//Eighth row
+generateCoins(90, 160, 600, 6);
+generateCoins(230, 770, 600, 6);
+generateCoins(860, 965, 600, 6);
 
-//Tenth Row
-for (let i = 125; i < 930; i += 35) coins.push(new Coin(i, 750));
+//Ninth row
+generateCoins(90, 265, 675, 6);
+generateCoins(335, 475, 675, 6);
+generateCoins(545, 685, 675, 6);
+generateCoins(755, 965, 675, 6);
 
-coins.forEach(coin => coin.drawCoin());
-
-superCoins.push(new Coin(75, 50), new Coin(75, 750), new Coin(935, 50), new Coin(935, 750));
-superCoins.forEach(coin => coin.drawSuperCoin());
+//Tenth row
+generateCoin(75, 750, 10);
+generateCoins(125, 930, 750, 6);
+generateCoin(935, 750, 10);

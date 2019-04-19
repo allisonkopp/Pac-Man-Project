@@ -1,49 +1,76 @@
-@import url("https://fonts.googleapis.com/css?family=Sigmar+One");
 @import url("https://fonts.googleapis.com/css?family=Anton");
 
 * {
   font-family: "anton";
-}
-
-#title-screen {
-  /* display: flex; */
-  display: none;
-  justify-content: center;
-  background-color: black;
   color: white;
 }
 
-#title-screen-contents {
-  width: 1000px;
-  height: 800px;
+.screen-display {
+  justify-content: center;
   background-color: black;
-  align-content: center;
+  /* color: white; */
 }
 
-#title-screen h1 {
+.contents-display {
+  width: 120vw;
+  height: 100vh;
+  background-color: black;
+  text-align: center;
+}
+
+#title-screen {
+  display: flex;
+  /* display: none; */
+}
+
+#title-screen-contents {
+  /* width: 120vw;
+  height: 100vh;
+  background-color: black; */
+  /* align-content: center;
+  justify-content: center;
+  align-self: center; */
+}
+
+h1 {
   font-size: 100px;
   text-align: center;
 }
 
-#title-screen h2 {
+h2 {
+  font-size: 50px;
+}
+
+h3 {
+  font-size: 30px;
+}
+
+#title-screen span {
   font-size: 40px;
+  padding-right: 20px;
 }
 
 .player-name-input {
-  justify-content: center;
-  display: flex;
+  /* justify-content: center;
+  text-align: center;
+  align-self: center; */
+  display: inline-flex;
+}
+
+#name-input {
+  /* display: inline-flex; */
 }
 
 #player-name {
   border: none;
-  color: white;
-  background-color: pink;
+  /* color: white; */
+  background-color: black;
   border: none;
   cursor: text;
   caret-color: white;
   font-size: 40px;
   height: 40px;
-  width: 500px;
+  width: 350px;
 }
 
 #player-name:focus {
@@ -58,9 +85,17 @@
 
 .btn {
   background-color: #f8cc48;
-  color: white;
+  /* color: white; */
   border-radius: 12px;
   padding: 16px 30px;
+  cursor: pointer;
+}
+
+.btn-clear {
+  background-color: transparent;
+  border: none;
+  /* color: white; */
+  outline: none;
   cursor: pointer;
 }
 
@@ -74,15 +109,34 @@
   border: solid 8px white;
 }
 
+.btn-YN {
+  font-size: 30px;
+  margin: 30px;
+}
+
 #start-btn {
   font-size: 40px;
 }
 
+#score-btn {
+  font-size: 30px;
+  display: inline-flex;
+}
+
+#score-btn-2 {
+  font-size: 30px;
+}
+
+#player-btn {
+  font-size: 30px;
+}
+
 #game-container {
-  /* display: none; */
-  display: flex;
+  display: none;
+  /* display: flex; */
   background-color: black;
   width: 100%;
+  /* position: fixed; */
 }
 
 #boundary {
@@ -101,17 +155,16 @@
   justify-content: center;
 }
 
-#high-score {
+/* #high-score {
   justify-content: center;
   align-content: center;
-}
+} */
 
 #game-board-lower {
   display: inline-flex;
   width: 100%;
   justify-content: space-around;
   background-color: black;
-  color: white;
 }
 
 #score-container {
@@ -123,5 +176,9 @@
 }
 
 #end-screen {
+  display: flex;
+}
+
+#high-score-list {
   display: none;
 }
