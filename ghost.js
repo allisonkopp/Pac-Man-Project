@@ -2,16 +2,16 @@ const ghostImg = new Image();
 const retroGhostImg = new Image();
 const ghostWidth = 30;
 const ghostHeight = 35;
+const resetX = 480;
+const resetY = 250;
 const direction = ["N", "E", "S", "W"];
 
 const getRandomDirection = _ => direction[Math.floor(Math.random() * direction.length)];
 
 // let possiblePaths = [];
-
 // const distanceFormula = (x1, x2, y1, y2) => {
 //   return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
 // };
-
 // const infinity = Math.pow(10, 1000);
 
 // const options = gameOptions[gameState.mode];
@@ -102,8 +102,8 @@ class Ghost extends World {
   // }
 
   resetGhost(ghost) {
-    ghost.x = 480;
-    ghost.y = 350;
+    ghost.x = resetX;
+    ghost.y = resetY;
   }
 
   retroMode() {
@@ -116,4 +116,5 @@ class Ghost extends World {
 
 let ghostsOnBoard = [];
 // for (let i = 0; i < options.numberOfGhost; i++) ghostsOnBoard.push(new Ghost(xxxx))
-ghostsOnBoard.push(new Ghost(430, 350), new Ghost(480, 350), new Ghost(530, 350));
+ghostsOnBoard.push(new Ghost(430, 250), new Ghost(480, 350), new Ghost(530, 250));
+ghostsOnBoard.forEach(ghost => ghost.draw());

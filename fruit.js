@@ -55,3 +55,5 @@ const createFruit = _ => {
 };
 
 setInterval(_ => createFruit(), 3000);
+
+if (fruitOnBoard) fruitOnBoard.draw();

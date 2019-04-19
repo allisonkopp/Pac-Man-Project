@@ -43,20 +43,6 @@ class Player extends World {
     this.name = document.getElementById("player-name");
     this.retro = null;
   }
-  // constructor(x, y) {
-  //   this.x = x;
-  //   this.y = y;
-  //   this.height = 28;
-  //   this.width = 28;
-  //   this.direction = "E";
-  //   this.speed = 2;
-  //   this.movement = String();
-  //   this.interval = null;
-  //   this.score = 0;
-  //   this.life = 3;
-  //   this.name = document.getElementById("player-name");
-  //   this.retro = null;
-  // }
 
   getScore() {
     return this.score;
@@ -261,40 +247,32 @@ class Player extends World {
   }
 
   gameOver() {
-    createScoreList();
-    gameContainer.style.display = "none";
-    endScreen.style.display = "flex";
+    // createScoreList();
+    if ((!coins.length && !superCoins.length) || this.life <= 0) {
+      gameContainer.style.display = "none";
+      endScreen.style.display = "flex";
+      return this.score;
+    }
   }
 }
 
 const player = new Player(startingPosX, startingPosY, playerWidth, playerHeight);
-const scoreList = document.getElementById("score-list");
-
-const createScoreList = _ => {
-  for (let i = 0; i < players.length; i++) {
-    players.push({ name: player.getName(), score: player.getScore() });
-    const scoreEntry = document.createElement("li");
-    scoreEntry.innerHTML = `${players[i].name} + ${players[i].score}`;
-    scoreList.appendChild(scoreEntry);
-  }
-};
-
-const currentName = document.getElementById("player-name");
-// players.push(currentName);
-const currentPlayer = players.find(player => player.name === currentName);
-// console.log(players);
-
-// window.addEventListener("keydown", e => player.movePlayer(e), true);
+player.draw();
 
 // const scoreList = document.getElementById("score-list");
 // const createScoreList = _ => {
-//   players.forEach(entry => {
+//   for (let i = 0; i < players.length; i++) {
+//     players.push({ name: player.getName(), score: player.getScore() });
 //     const scoreEntry = document.createElement("li");
-//     scoreEntry.innerHTML = `${entry.name}, ${entry.score}`;
+//     scoreEntry.innerHTML = `${players[i].name} + ${players[i].score}`;
 //     scoreList.appendChild(scoreEntry);
-//   });
+//   }
 // };
-// createScoreList();
+
+// const currentName = document.getElementById("player-name");
+// players.push(currentName);
+// const currentPlayer = players.find(player => player.name === currentName);
+// console.log(players);
 
 // const highScoreList = [{ name: player.name, score: player.getScore() }];
 // const scoreList = document.getElementById("score-list");

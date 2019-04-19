@@ -38,9 +38,16 @@ const updateGameBoard = _ => {
 startBtn.addEventListener("click", startGame);
 
 const replayGame = _ => {
-  endScreen.style.display = "none";
-  gameContainer.style.display = "inline-block";
-  updateGameBoard();
+  // gameContainer.style.display = "none";
+  location.reload();
+  startGame();
+  // endScreen.style.display = "none";
+  // titleScreen.style.display = "none";
+  // gameContainer.style.display = "inline-block";
+  // clearGameBoard();
+  // drawGameBoard();
+  // updateGameBoard();
+  // startGame();
 };
 
 const backToTitle = _ => {
