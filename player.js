@@ -1,8 +1,3 @@
-// titleScreen = document.getElementById("title-screen");
-// gameContainer = document.getElementById("game-container");
-// endScreen = document.getElementById("end-screen");
-// highScoreScreen = document.getElementById("high-score-list");
-
 const playerUp = new Image();
 const playerDown = new Image();
 const playerLeft = new Image();
@@ -27,9 +22,18 @@ const heart3 = document.getElementById("life-3");
 
 const keepScore = document.getElementById("score");
 
+// const playerImages = {
+//   up: { img: "./images/pacman-up.png" },
+//   right: { img: "./images/pacman-right.png" },
+//   down: { img: "./images/pacman-down.png" },
+//   left: { img: "./images/pacman-left.png" }
+// };
+
 class Player extends World {
   constructor(x, y, width, height, img) {
     super(x, y, width, height, img);
+    this.width = playerWidth;
+    this.height = playerHeight;
     this.direction = "E";
     this.speed = 2;
     this.movement = String();
@@ -82,17 +86,17 @@ class Player extends World {
     playerDown.src = "./images/pacman-down.png";
     switch (this.direction) {
       case "W":
-        ctx.drawImage(playerLeft, this.x, this.y, playerWidth, playerHeight);
+        ctx.drawImage(playerLeft, this.x, this.y, this.width, this.height);
         break;
       case "N":
-        ctx.drawImage(playerUp, this.x, this.y, playerWidth, playerHeight);
+        ctx.drawImage(playerUp, this.x, this.y, this.width, this.height);
         break;
       case "S":
-        ctx.drawImage(playerDown, this.x, this.y, playerWidth, playerHeight);
+        ctx.drawImage(playerDown, this.x, this.y, this.width, this.height);
         break;
       case "E":
       default:
-        ctx.drawImage(playerRight, this.x, this.y, playerWidth, playerHeight);
+        ctx.drawImage(playerRight, this.x, this.y, this.width, this.height);
         break;
     }
   }
@@ -121,30 +125,6 @@ class Player extends World {
     !this.hitWall(this.x + this.width, this.y) ? this.startInterval() : this.clearInterval();
   }
 
-  // moveDirection(command) {
-  //   const movement = {
-  //     up: { direction: "N", x: this.x, y: this.y - this.speed, action: _ => (this.y -= this.speed) },
-  //     right: { direction: "E", x: this.x + this.width, y: this.y, action: _ => (this.x += this.speed) },
-  //     down: { direction: "S", x: this.x, y: this.y + this.height, action: _ => (this.y += this.speed) },
-  //     left: { direction: "W", x: this.x - this.speed, y: this.y, action: _ => (this.x -= this.speed) }
-  //   }[command];
-  //   console.log(movement["up"].direction);
-  //   !this.hitWall(movement.x, movement.y) && movement.action ? startInterval() : clearInterval();
-  // return movement;
-
-  // movePlayerUp() {
-  //   this.direction = "N";
-  //   if (!this.hitWall(this.x, this.y - this.speed)) {
-  //     this.y -= this.speed;
-  //     this.startInterval();
-  //   } else this.clearInterval();
-  // }
-
-  // moveDirection(command) {
-  //   super.moveDirection(command);
-  //   !this.hitWall(movement.x, movement.y) ? startInterval() : clearInterval();
-  // }
-
   movePlayer(e = {}) {
     this.speed = 2;
     const _e = e.key || e;
@@ -165,9 +145,9 @@ class Player extends World {
         this.moveDown();
         break;
     }
-    lastTravelled.push(`${this.x}, ${this.y}`);
-    lastTravelledX = lastTravelled[lastTravelled.length - 1].split(",")[0];
-    lastTravelledY = lastTravelled[lastTravelled.length - 1].split(",")[1];
+    // lastTravelled.push(`${this.x}, ${this.y}`);
+    // lastTravelledX = lastTravelled[lastTravelled.length - 1].split(",")[0];
+    // lastTravelledY = lastTravelled[lastTravelled.length - 1].split(",")[1];
 
     this.collectCoins(coins);
     this.collectCoins(superCoins);
@@ -176,39 +156,6 @@ class Player extends World {
     this.draw();
     keepScore.innerHTML = this.score;
   }
-
-  // movePlayerUp() {
-  //   this.direction = "N";
-  //   if (!this.hitWall(this.x, this.y - this.speed)) {
-  //     this.y -= this.speed;
-  //     this.startInterval();
-  //   } else this.clearInterval();
-  // }
-
-  // movePlayerDown() {
-  //   this.direction = "S";
-  //   if (!this.hitWall(this.x, this.y + playerHeight)) {
-  //     this.y += this.speed;
-  //     this.startInterval();
-  //   } else this.clearInterval();
-  // }
-
-  // movePlayerRight() {
-  //   this.direction = "E";
-  //   // if (!this.hitWall(this.x + playerWidth, this.y)) {
-  //   if (!this.hitWall(this.x + playerWidth, this.y)) {
-  //     this.x += this.speed;
-  //     this.startInterval();
-  //   } else this.clearInterval();
-  // }
-
-  // movePlayerLeft() {
-  //   this.direction = "W";
-  //   if (!this.hitWall(this.x - this.speed, this.y)) {
-  //     this.x -= this.speed;
-  //     this.startInterval();
-  //   } else this.clearInterval();
-  // }
 
   // movePlayer(e = {}) {
   //   this.speed = 2;
@@ -250,22 +197,11 @@ class Player extends World {
   //   keepScore.innerHTML = this.score;
   // }
 
-  // collision(collidedObject) {
-  //   return (
-  //     collidedObject &&
-  //     this.x + this.width >= collidedObject.x &&
-  //     this.x <= collidedObject.x + collidedObject.width &&
-  //     this.y + this.height >= collidedObject.y &&
-  //     this.y <= collidedObject.y + collidedObject.height
-  //   );
-  // }
-
   collectCoins(coinType) {
     if (!coinType.length) this.gameOver();
     for (let i = 0; i < coinType.length; i++) {
       const coin = coinType[i];
       if (this.collision(coin)) {
-        // console.log(`A coin was removed`);
         coinType.splice(i, 1);
         if (coinType === coins) this.score += 10;
         if (coinType === superCoins) {
@@ -276,10 +212,6 @@ class Player extends World {
     }
   }
 
-  // keepScore(item, value) {
-  //   if (item) this.score += value;
-  // }
-
   eatFruit(fruit) {
     if (this.collision(fruit)) {
       this.score += fruit.value;
@@ -287,32 +219,11 @@ class Player extends World {
     }
   }
 
-  // hitWall(x, y) {
-  //   const getImgData = ctx.getImageData(x, y, 15, 15);
-  //   for (let i = 0; i < 4 * 15 * 15; i += 4) {
-  //     return getImgData.data[i + 2] > 200 && getImgData.data[i] < 100 && getImgData.data[i + 1] < 100 ? true : false;
-  //     // return getImgData.data[i] < 100 && getImgData.data[i + 1] < 100 && getImgData.data[i + 2] > 200 ? true : false;
-  //   }
-  // }
-
-  // hitWall(x, y) {
-  //   const getImgData = ctx.getImageData(x, y, 15, 15);
-  //   let didHitWall = false;
-  //   for (let i = 0; i < 4 * 15 * 15; i += 4) {
-  //     if (getImgData.data[i + 2] > 200 && getImgData.data[i] < 100 && getImgData.data[i + 1] < 100) {
-  //       // console.log("Player hit the wall");
-  //       didHitWall = true;
-  //     }
-  //   }
-  //   return didHitWall;
-  // }
-
   hitGhost() {
     for (let i = 0; i < ghostsOnBoard.length; i++) {
       const ghost = ghostsOnBoard[i];
       if (this.collision(ghost)) {
         if (!retroMode) {
-          console.log("Player has hit a ghost");
           this.loseLife();
           this.resetPlayer();
         } else {
@@ -324,18 +235,11 @@ class Player extends World {
     }
   }
 
-  resetPlayer() {
-    this.x = startingPosX;
-    this.y = startingPosY;
-    this.speed = 0;
-    this.direction = "E";
-  }
-
   retroMode() {
-    console.log("starting retro mode");
+    // console.log("starting retro mode");
     retroMode = true;
     setTimeout(_ => {
-      console.log("turning ghosts back to normal");
+      // console.log("turning ghosts back to normal");
       retroMode = false;
     }, 10000);
   }
@@ -345,25 +249,24 @@ class Player extends World {
     if (this.life === 2) heart2.parentNode.removeChild(heart2);
     if (this.life === 1) heart1.parentNode.removeChild(heart1);
     this.life--;
-    if (this.life === 0) this.gameOver();
-    console.log(`Player has ${this.life} lives remaining`);
+    if (this.life <= 0) this.gameOver();
+    // console.log(`Player has ${this.life} lives remaining`);
+  }
+
+  resetPlayer() {
+    this.x = startingPosX;
+    this.y = startingPosY;
+    this.speed = 0;
+    this.direction = "E";
   }
 
   gameOver() {
-    // ctx.font = "100px Anton";
-    // ctx.fillText("Game Over", 400, 350);
-    // players.push({ name: this.getName(), score: this.getScore() });
     createScoreList();
     gameContainer.style.display = "none";
     endScreen.style.display = "flex";
-    // setTimeout(_ => {
-    //   gameContainer.style.display = "none";
-    //   endScreen.style.display = "flex";
-    // }, 1000);
   }
 }
 
-// const players = [];
 const player = new Player(startingPosX, startingPosY, playerWidth, playerHeight);
 const scoreList = document.getElementById("score-list");
 

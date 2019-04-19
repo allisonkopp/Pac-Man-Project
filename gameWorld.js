@@ -49,17 +49,6 @@ class World {
       return getImgData.data[i + 2] > 200 && getImgData.data[i] < 100 && getImgData.data[i + 1] < 100 ? true : false;
     }
   }
-
-  //   moveDirection(command) {
-  //     const movement = {
-  //       up: { direction: "N", x: this.x, y: this.y - this.speed, action: _ => (this.y -= this.speed) },
-  //       right: { direction: "E", x: this.x + this.width, y: this.y, action: _ => (this.x += this.speed) },
-  //       down: { direction: "S", x: this.x, y: this.y + this.height, action: _ => (this.y += this.speed) },
-  //       left: { direction: "W", x: this.x - this.speed, y: this.y, action: _ => (this.x -= this.speed) }
-  //     }[command];
-  //     !this.hitWall(movement.x, movement.y) && movement.action();
-  //     // return movement;
-  //   }
 }
 
 const board = new World(0, 0, boardWidth, boardHeight);
