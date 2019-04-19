@@ -36,7 +36,7 @@ class Ghost extends World {
   }
 
   moveGhost() {
-    if (this.hitWall(this.x, this.y)) this.direction = getRandomDirection();
+    // if (this.hitWall(this.x, this.y)) this.direction = getRandomDirection();
     switch (this.direction) {
       case "N":
         this.moveUp();
@@ -55,22 +55,24 @@ class Ghost extends World {
 
   moveUp() {
     super.moveUp();
-    if (!this.hitWall(this.x, this.y - this.speed)) this.direction = getRandomDirection();
+    if (this.hitWall(this.x, this.y - this.speed)) this.direction = getRandomDirection();
   }
 
   moveDown() {
     super.moveDown();
-    if (!this.hitWall(this.x, this.y + this.height)) this.direction = getRandomDirection();
+    if (this.hitWall(this.x, this.y + this.height)) this.direction = getRandomDirection();
   }
 
   moveLeft() {
     super.moveLeft();
-    if (!this.hitWall(this.x - this.speed, this.y)) this.direction = getRandomDirection();
+    if (this.hitWall(this.x - this.speed, this.y)) this.direction = getRandomDirection();
+    if (this.outOfBounds()) this.x += this.speed;
   }
 
   moveRight() {
     super.moveRight();
-    if (!this.hitWall(this.x + this.width, this.y)) this.direction = getRandomDirection();
+    if (this.hitWall(this.x + this.width, this.y)) this.direction = getRandomDirection();
+    if (this.outOfBounds()) this.x -= this.speed;
   }
 
   outOfBounds() {

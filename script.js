@@ -11,11 +11,11 @@ const startGame = _ => {
   window.addEventListener("keydown", e => player.movePlayer(e), true);
 };
 
-const getHighScores = _ => {
-  titleScreen.style.display = "none";
-  endScreen.style.display = "none";
-  highScoreScreen.style.display = "flex";
-};
+// const getHighScores = _ => {
+//   titleScreen.style.display = "none";
+//   endScreen.style.display = "none";
+//   highScoreScreen.style.display = "flex";
+// };
 
 const clearGameBoard = _ => ctx.clearRect(0, 0, gameBoard.width, gameBoard.height);
 
@@ -27,8 +27,6 @@ const redrawGameBoard = _ => {
   if (fruitOnBoard) fruitOnBoard.draw();
   ghostsOnBoard.forEach(ghost => ghost.draw());
   ghostsOnBoard.forEach(ghost => ghost.moveGhost());
-  // coins.forEach(coin => coin.drawCoin());
-  // superCoins.forEach(coin => coin.drawSuperCoin());
 };
 
 const updateGameBoard = _ => {
@@ -39,19 +37,23 @@ const updateGameBoard = _ => {
 
 startBtn.addEventListener("click", startGame);
 
-//fix this -- restart game function
 const replayGame = _ => {
   endScreen.style.display = "none";
   gameContainer.style.display = "inline-block";
-  // clearGameBoard();
-  // redrawGameBoard();
   updateGameBoard();
 };
 
-const newPlayer = _ => {
+const backToTitle = _ => {
   endScreen.style.display = "none";
   titleScreen.style.display = "flex";
-  document.getElementById("player-name").value = "";
   clearGameBoard();
   redrawGameBoard();
 };
+
+// const newPlayer = _ => {
+//   endScreen.style.display = "none";
+//   titleScreen.style.display = "flex";
+//   document.getElementById("player-name").value = "";
+//   clearGameBoard();
+//   redrawGameBoard();
+// };

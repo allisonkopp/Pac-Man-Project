@@ -8,6 +8,7 @@
 .screen-display {
   justify-content: center;
   background-color: black;
+  height: 100%;
   /* color: white; */
 }
 
@@ -16,6 +17,7 @@
   height: 100vh;
   background-color: black;
   text-align: center;
+  /* position: relative; */
 }
 
 #title-screen {
@@ -51,9 +53,7 @@ h3 {
 }
 
 .player-name-input {
-  /* justify-content: center;
-  text-align: center;
-  align-self: center; */
+  margin-top: 30px;
   display: inline-flex;
 }
 
@@ -69,8 +69,8 @@ h3 {
   cursor: text;
   caret-color: white;
   font-size: 40px;
-  height: 40px;
-  width: 350px;
+  height: 5vh;
+  width: 42vw;
 }
 
 #player-name:focus {
@@ -112,10 +112,12 @@ h3 {
 .btn-YN {
   font-size: 30px;
   margin: 30px;
+  outline: none;
 }
 
 #start-btn {
   font-size: 40px;
+  color: blue;
 }
 
 #score-btn {
@@ -129,6 +131,66 @@ h3 {
 
 #player-btn {
   font-size: 30px;
+}
+
+#animations {
+  margin-top: 17vh;
+  display: inline-flex;
+  /* flex-direction: row; */
+  width: 60%;
+}
+
+.pacman {
+  /* display: inline-flex; */
+  /* margin-left: 5px; */
+  margin-top: 45px;
+  margin-left: 15px;
+  height: 1px;
+  width: 1px;
+  border-radius: 50%;
+  border: 70px solid #f8cc48;
+  /* position: inline-block; */
+  animation: pacman 1s linear infinite;
+}
+
+.munch {
+  align-content: center;
+  overflow-x: hidden;
+  border-radius: 30%;
+  margin: 20px;
+
+  width: 30px;
+  height: 30px;
+  /* background-color: white; */
+  right: -30px;
+
+  animation: munch 1s linear 0s infinite;
+  /* animation-delay: 1s; */
+  /* display: inline-flex; */
+  /* flex-direction: column;
+  transform: rotate(90deg); */
+}
+
+@keyframes munch {
+  0% {
+    box-shadow: 100px 65px, 300px 65px, 500px 65px, 700px 65px, 900px 65px 0 0, 1100px 65px, 1300px 65px;
+  }
+
+  100% {
+    box-shadow: 0px 65px, 100px 65px, 300px 65px, 500px 65px, 700px 65px, 900px 65px, 1100px 65px;
+  }
+}
+
+@keyframes pacman {
+  0% {
+    border-right: 70px solid transparent;
+  }
+  50% {
+    border-right: 70px solid #f8cc48;
+  }
+  100% {
+    border-right: 70px solid transparent;
+  }
 }
 
 #game-container {
@@ -175,8 +237,12 @@ h3 {
   display: inline-flex;
 }
 
+#replay-game {
+  margin-top: 20px;
+}
+
 #end-screen {
-  display: flex;
+  display: none;
 }
 
 #high-score-list {

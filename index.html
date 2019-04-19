@@ -13,23 +13,26 @@
         <div>
           <h1><b>PACMAN</b></h1>
         </div>
-        <div class="player-name-input">
+        <!-- <div class="player-name-input">
           <span>Enter your name:&nbsp;</span>
           <form id="name-input" autocomplete="off">
             <input type="text" name="playerName" autofocus="autofocus" id="player-name" />
           </form>
         </div>
-        <!-- If there's time -->
         <div id="level-select">
           <button class="btn difficulty-btn" type="button">Easy</button>
           <button class="btn difficulty-btn" type="button">Medium</button>
           <button class="btn difficulty-btn" type="button">Hard</button>
-        </div>
+        </div> -->
         <div>
           <button class="btn-clear" id="start-btn" type="button">Start Game</button>
         </div>
-        <div>
+        <!-- <div>
           <button class="btn-clear" id="score-btn" type="button" onclick="getHighScores()">High Scores</button>
+        </div> -->
+        <div id="animations">
+          <div class="pacman"></div>
+          <div class="munch"></div>
         </div>
       </div>
     </div>
@@ -53,24 +56,29 @@
     </div>
     <div id="end-screen" class="screen-display">
       <div class="contents-display">
-        <h1>Game Over</h1>
+        <div>
+          <h1>Game Over</h1>
+        </div>
+        <div>
+          <img src="./images/retroghost2.png" alt="ghost" height="180px" />
+        </div>
         <div id="replay-game">
           <h2>Play again?</h2>
           <div id="replay-selection">
             <button class="btn btn-YN" type="button" onclick="replayGame()">Yes</button>
-            <button class="btn btn-YN" type="button">No</button>
+            <button class="btn btn-YN" type="button" onclick="backToTitle()">No</button>
           </div>
-          <div>
+          <!-- <div>
             <button class="btn-clear" id="player-btn" type="button" onclick="newPlayer()">New Player</button>
           </div>
           <div>
             <button class="btn-clear" id="score-btn-2" type="button" onclick="getHighScores()">High Scores</button>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
 
-    <div id="high-score-list" class="screen-display">
+    <!-- <div id="high-score-list" class="screen-display">
       <div class="contents-display">
         <div>
           <h2>High Scores</h2>
@@ -79,7 +87,7 @@
           <ul id="score-list"></ul>
         </div>
       </div>
-    </div>
+    </div> -->
     <script type="text/javascript" src="gameWorld.js"></script>
     <script type="text/javascript" src="gameBoard.js"></script>
     <script type="text/javascript" src="coin.js"></script>
