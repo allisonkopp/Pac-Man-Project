@@ -78,3 +78,6 @@ generateCoins(755, 965, 675, 6);
 generateCoin(75, 750, 10);
 generateCoins(125, 930, 750, 6);
 generateCoin(935, 750, 10);
+
+coins.forEach(coin => coin.drawCoin(6));
+superCoins.forEach(coin => coin.drawCoin(10));
